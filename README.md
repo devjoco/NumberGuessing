@@ -1,4 +1,4 @@
-# Number Guesser
+# Number Guessing
 A game of guessing random numbers
 
 ## Difficulties
