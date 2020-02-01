@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 import random
 
+def promptForInt(s):
+    while True:
+        try:
+            guess = int(input(s))
+            return guess
+        except ValueError:
+            print("You must enter an integer!")
+
 # Setup
 ## Determine Difficulty
 ## Easy   --> 5 lives, number ϵ [1,10]
@@ -28,13 +36,12 @@ upper  = 50 if likelyHard else (30 if likelyMed else 10)
 number = random.randint(1, upper)
 
 print(f"I'm thinking of a number from 1 to {upper}. Can you guess it in {lives} tries?")
-guess = int(input(f"Your guess.. "))
+guess = promptForInt("Your guess.. ")
 
 while(lives > 1 and guess != number):
     lives -= 1
     stmt = "Bigger!" if guess < number else "Smaller!"
-    print(f"{stmt} Try again", end='.. ')
-    guess = int(input())
+    guess = promptForInt(f"{stmt} Try again.. ")
 
 if guess == number:
     lives -= 1
